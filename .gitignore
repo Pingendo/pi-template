@@ -1,0 +1,11 @@
+
+# dependencies
+/node_modules
+*-debug.log
+*-error.log
+/.nyc_output
+/lib
+/package-lock.json
+/tmp
+/node_modules
+/src/pi-template/node_modules
