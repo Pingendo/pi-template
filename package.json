@@ -6,20 +6,6 @@
   "scripts": {
     "test": "jasmine"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:allenhwkim/angular-template.git"
-  },
-  "author": {
-    "name": "Allen Kim",
-    "email": "allenhwkim@gmail.com"
-  },
-  "contributors": [
-    {
-      "name": "Domas Trijonis",
-      "email": "domas.trijonis@gmail.com"
-    }
-  ],
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
@@ -32,5 +18,7 @@
     "gulp-tap": "~1.0.1",
     "gulp-util": "~3.0.8",
     "jasmine": "^2.7.0"
-  }
+  },
+  "repository": "https://github.com/Pingendo/pi-template.git",
+  "author": "GiorgioPingendo <giorgio.seregni@pingendo.com>"
 }
