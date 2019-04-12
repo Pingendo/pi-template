@@ -14,6 +14,10 @@ describe("ht", () => {
 
   describe("pipes", () => {
 
+    it('markdown', () => {
+      expect(ht("{{x | markdown }}", { x: 'A' })).toEqual("<p>A</p>");
+    });
+
     it('lowercase/uppercase', () => {
       expect(ht("{{x.foo | lowercase }} {{ x.bar | lowercase }}", { x: { foo: 'A', bar: 'B' } })).toEqual("a b");
     });

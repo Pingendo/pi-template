@@ -120,7 +120,8 @@ piTemplate.pipes = {
   json: require('./pipes/json'),
   date: require('./pipes/date'),
   limitTo: require('./pipes/limit-to'),
-  filter: require('./pipes/filter')
+  filter: require('./pipes/filter'),
+  markdown: require('./pipes/markdown')
 };
 
 // all internal helpers will be exposed as well and can be overriden
