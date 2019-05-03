@@ -64,8 +64,8 @@ var piTemplate = function (fileOrHtml, data, options, nested) {
       .replace(/&lt;%/g, "<%")                       // <%
       .replace(/%&gt;/g, "%>")                        // %>
       .replace(/; i &lt;/g, "; i <")                  // ; i <
-      .replace(/&quot;/g, '"')                       // "
-      .replace(/&apos;/g, "'")                       // '
+      // .replace(/&quot;/g, '"')                       // "
+      // .replace(/&apos;/g, "'")                       // '
       .replace(/ &amp;&amp; /g, " && ")              // &&
       .replace(/{{(.*?)}}/g, function (match, capture) {
         return "<%=" + piTemplate.helpers.expression(capture, options) + "%>";
