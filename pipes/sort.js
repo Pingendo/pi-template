@@ -27,9 +27,17 @@ module.exports = function limitTo(options, input, property, reverse) {
 	if (!Array.isArray(input))
 		throw new Error('filter only works with arrays');
 
+
 	input.sort(function(a, b) {
-    	var textA = a[property].toUpperCase();
-    	var textB = b[property].toUpperCase();
+		
+    	var textA = a[property]
+    	if (textA.toUpperCase)
+    		textA = textA.toUpperCase()
+
+    	var textB = b[property]
+    	if (textB.toUpperCase)
+    		textB.toUpperCase();
+    	
     	return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
 	});
 
@@ -37,32 +45,5 @@ module.exports = function limitTo(options, input, property, reverse) {
 		input.reverse()
 
 	return input
-
-  // if (Math.abs(Number(limit)) === Infinity) {
-  //   limit = Number(limit);
-  // } else {
-  //   limit = parseInt(limit, 10);
-  // }
-  // if (isNaN(limit)) return input;
-
-  // if (typeof (input) === 'number') input = input.toString();
-
-  // begin = (!begin || isNaN(begin)) ? 0 : parseInt(begin, 10);
-  // begin = (begin < 0) ? Math.max(0, input.length + begin) : begin;
-
-  // if (limit >= 0) {
-  //   return sliceFn(input, begin, begin + limit);
-  // } else {
-  //   if (begin === 0) {
-  //     return sliceFn(input, limit, input.length);
-  //   } else {
-  //     return sliceFn(input, Math.max(0, begin + limit), begin);
-  //   }
-  // }
+ 
 };
-
-// function sliceFn(input, begin, end) {
-//   if (typeof (input) === 'string') return input.slice(begin, end);
-
-//   return Array.prototype.slice.call(input, begin, end);
-// }
