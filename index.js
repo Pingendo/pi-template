@@ -121,7 +121,8 @@ piTemplate.pipes = {
   date: require('./pipes/date'),
   limitTo: require('./pipes/limit-to'),
   filter: require('./pipes/filter'),
-  markdown: require('./pipes/markdown')
+  markdown: require('./pipes/markdown'),
+  sort: require('./pipes/sort')
 };
 
 // all internal helpers will be exposed as well and can be overriden

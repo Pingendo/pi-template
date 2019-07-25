@@ -25,6 +25,10 @@ THE SOFTWARE.
 */
 
 module.exports = function filter(options, array, expression, comparator, anyPropertyKey) {
+
+
+
+
   if (!Array.isArray(array)) {
     if (array == null) {
       return array;
@@ -35,6 +39,9 @@ module.exports = function filter(options, array, expression, comparator, anyProp
 
   anyPropertyKey = anyPropertyKey || '$';
   var expressionType = getTypeForFilter(expression);
+  
+
+
   var predicateFn;
   var matchAgainstAnyProp;
 
@@ -57,6 +64,16 @@ module.exports = function filter(options, array, expression, comparator, anyProp
 
   return Array.prototype.filter.call(array, predicateFn);
 };
+
+
+function isFunction(functionToCheck) {
+ return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+}
+
+function hasCustomToString(obj) {
+  return isFunction(obj.toString) && obj.toString !== Object.prototype.toString;
+}
+
 
 // Helper functions for `filterFilter`
 function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp) {
@@ -102,7 +119,7 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
 
   if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
     return !deepCompare(actual, expected.substring(1), comparator, anyPropertyKey, matchAgainstAnyProp);
-  } else if (isArray(actual)) {
+  } else if (Array.isArray(actual)) {
     // In case `actual` is an array, consider it a match
     // if ANY of it's items matches `expected`
     return actual.some(function (item) {
