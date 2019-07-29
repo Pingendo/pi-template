@@ -134,8 +134,13 @@ module.exports = piTemplate;
 
 
 // console.log(piTemplate(
-//   `<a ht-repeat="a in lista | match : 'ser' : 'surname' ">{{a.name}}</a>`, 
+//   `<p ht-repeat="a in lista">
+//   <span ht-repeat="b in lista2 | match : 'ser' : a.name ">
+//   </span>
+//   {{a.name}}</p>`, 
 //   {"lista" : 
+//     [{'surname' : 'seregni','name': 'giulio'}, {'surname': 'pippo' , 'name' : "giulia"}],
+//     "lista2" : 
 //     [{'surname' : 'seregni','name': 'giulio'}, {'surname': 'pippo' , 'name' : "giulia"}]
 //   }
 //   ))
