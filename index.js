@@ -122,7 +122,8 @@ piTemplate.pipes = {
   limitTo: require('./pipes/limit-to'),
   filter: require('./pipes/filter'),
   markdown: require('./pipes/markdown'),
-  sort: require('./pipes/sort')
+  sort: require('./pipes/sort'),
+  match: require('./pipes/match')
 };
 
 // all internal helpers will be exposed as well and can be overriden
@@ -130,3 +131,11 @@ piTemplate.helpers = require('./lib/helpers');
 
 // export {angularTemplate as angularTemplate}  
 module.exports = piTemplate;
+
+
+// console.log(piTemplate(
+//   `<a ht-repeat="a in lista | match : 'ser' : 'surname' ">{{a.name}}</a>`, 
+//   {"lista" : 
+//     [{'surname' : 'seregni','name': 'giulio'}, {'surname': 'pippo' , 'name' : "giulia"}]
+//   }
+//   ))
