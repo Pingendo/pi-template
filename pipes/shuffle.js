@@ -27,12 +27,11 @@ module.exports = function shuffle(options, input) {
     if (!Array.isArray(input))
         throw new Error('filter only works with arrays');
 
-    var j, x, i;
-    for (i = input.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        input[i] = a[j];
-        input[j] = x;
+
+    for (let i = input.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [input[i], input[j]] = [input[j], input[i]];
     }
+
     return input;
 };
