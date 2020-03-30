@@ -10,7 +10,18 @@ module.exports = function match(options, array, regex, key) {
 
 	var re = new RegExp(regex)
 
-	return Array.prototype.filter.call(array, function(actual) {
+
+	var filter2 = (obj, predicate) => 
+    Object.keys(obj)
+          .filter( key => predicate(obj[key]) )
+          .reduce( (res, key) => (res[key] = obj[key], res), {} );
+
+	
+
+
+	return filter2(array, function(actual) {
+
+		console.log("KEY")
 
 		if (key) {
 			if (typeof actual[key] === 'undefined')

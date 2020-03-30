@@ -23,13 +23,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. 
 
 */
-module.exports = function limitTo(options, input, property, reverse) {
-	if (!Array.isArray(input))
-		throw new Error('filter only works with arrays');
-
-
-	input.sort(function(a, b) {
+module.exports = function sort(options, input, property, reverse) {
+	// if (!Array.isArray(input))
+	// 	throw new Error('Sort only works with arrays');
+	function sortKeys(obj_1, sortFn) { 
+		var key = Object.keys(obj_1) 
+		.sort(sortFn);  
 		
+		key = reverse ? key.reverse() : key
+
+		// Taking the object in 'temp' object 
+		// and deleting the original object. 
+		var temp = {}; 
+			
+		for (var i = 0; i < key.length; i++) { 
+			temp[key[i]] = obj_1[key[i]]; 
+			delete obj_1[key[i]]; 
+		}  
+
+		// Copying the object from 'temp' to  
+		// 'original object'. 
+		for (var i = 0; i < key.length; i++) { 
+			obj_1[key[i]] = temp[key[i]]; 
+		}  
+		return obj_1; 
+	} 
+
+	var r = sortKeys(input, function(a, b) {
+		a = input[a]
+		b = input[b]
     	var textA = a[property]
     	if (textA.toUpperCase)
     		textA = textA.toUpperCase()
@@ -39,11 +61,25 @@ module.exports = function limitTo(options, input, property, reverse) {
     		textB.toUpperCase();
     	
     	return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-	});
+	})
 
-	if (reverse)
-		input.reverse()
 
-	return input
+	// input.sort(function(a, b) {
+		
+    // 	var textA = a[property]
+    // 	if (textA.toUpperCase)
+    // 		textA = textA.toUpperCase()
+
+    // 	var textB = b[property]
+    // 	if (textB.toUpperCase)
+    // 		textB.toUpperCase();
+    	
+    // 	return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+	// });
+
+	// if (reverse)
+	// 	input.reverse()
+
+	return r
  
 };
